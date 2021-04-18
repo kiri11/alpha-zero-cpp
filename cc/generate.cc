@@ -3,12 +3,12 @@
 #include <Player.h>
 #include <Game.h>
 #include <json.hpp>
-#include <experimental/filesystem>
+#include <filesystem>
 #include <algorithm>
 #include <cxxopts.hpp>
 #include <math.h>       /* isnan, sqrt */
 using json = nlohmann::json;
-namespace fs = std::experimental::filesystem;
+namespace fs = std::filesystem;
 
 namespace Generate{
 	struct Info {

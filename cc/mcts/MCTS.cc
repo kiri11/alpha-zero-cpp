@@ -63,7 +63,7 @@ ArrayXf MCTS::do_simulate(std::shared_ptr<GameState> root, NNWrapper& model, MCT
 
 
 ArrayXf MCTS::do_parallel_simulate(std::shared_ptr<GameState> root, NNWrapper& model, MCTS::Config cfg){
-	int simulations_to_run = cfg.n_simulations / cfg.batchSize; 
+	int simulations_to_run = cfg.n_simulations / cfg.batchSize;
 	
 	omp_set_dynamic(0);
 	for(int j = 0; j < simulations_to_run + 1; j++){
@@ -92,7 +92,7 @@ ArrayXf MCTS::do_parallel_simulate(std::shared_ptr<GameState> root, NNWrapper& m
 		std::vector<NN::Output> res = res_future.get(); 
 
 		#pragma omp parallel for num_threads(cfg.n_threads)
-		for(unsigned int i = 0; i < leafs.size(); i++){
+		for(int i = 0; i < leafs.size(); i++){
 			leafs[i]->removeVirtualLoss(cfg.vloss);
 			leafs[i]->expand(res[i].policy, cfg.dirichlet_alpha);
 			leafs[i]->backup(res[i].value);

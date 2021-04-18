@@ -92,7 +92,7 @@ bool TicTacToe::isWin(Matrix<bool,Dynamic,Dynamic> smallBoard){
 	bool ldiagonal = smallBoard.diagonal().all();
 	bool rdiagonal = smallBoard.rowwise().reverse().diagonal().all();
 
-	return vertical.any() or horizontal.any() or ldiagonal or rdiagonal;
+	return vertical.any() || horizontal.any() || ldiagonal || rdiagonal;
 }	
 
 MatrixXf TicTacToe::getBoard(){

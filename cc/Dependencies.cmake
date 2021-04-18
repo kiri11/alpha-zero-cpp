@@ -1,10 +1,10 @@
 include(${CMAKE_ROOT}/Modules/ExternalProject.cmake)
 include(${CMAKE_ROOT}/Modules/FetchContent.cmake)
 
-set( Eigen3_VERSION "3.2.9" )
+set( Eigen3_VERSION "3.3.9" )
 
 ExternalProject_Add( Eigen3
-  URL "http://bitbucket.org/eigen/eigen/get/${Eigen3_VERSION}.tar.gz"
+  URL "https://gitlab.com/libeigen/eigen/-/archive/${Eigen3_VERSION}/eigen-${Eigen3_VERSION}.tar.gz"
   UPDATE_COMMAND ""
   CONFIGURE_COMMAND ""
   BUILD_COMMAND ""
@@ -49,7 +49,7 @@ add_library(Catch INTERFACE)
 target_include_directories(Catch INTERFACE ${CATCH_INCLUDE_DIR})
 
 #https://download.pytorch.org/libtorch/nightly/cpu/libtorch-shared-with-deps-latest.zip
-
+set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "C:/Progs/libtorch")
 list(APPEND CMAKE_PREFIX_PATH ${CMAKE_BINARY_DIR}/libtorch)
 find_package(Torch)
 if(NOT Torch_FOUND)
@@ -96,13 +96,6 @@ ExternalProject_Add(cxxopts
 
 set(CXXOPTS_INCLUDE_DIR  ${INSTALL_DEPENDENCIES_DIR}/include/cxxopts/)
 
-ExternalProject_Add(bayeselo
-  URL "https://www.remi-coulom.fr/Bayesian-Elo/bayeselo.tar.bz2"
-  UPDATE_COMMAND ""
-  CONFIGURE_COMMAND ""
-  BUILD_COMMAND ""
-  INSTALL_COMMAND make -C ${CMAKE_BINARY_DIR}/bayeselo-prefix/src/bayeselo
- )
 
 include(FetchContent)
 FetchContent_Declare(

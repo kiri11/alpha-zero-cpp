@@ -10,13 +10,13 @@
 #include <GameState.h>
 //#include "NNObserver.h"
 
-#include <experimental/filesystem>
+#include <filesystem>
 #include <mutex>  
 #include <shared_mutex>
 #include <future>
 
 using namespace Eigen;
-namespace fs = std::experimental::filesystem;
+namespace fs = std::filesystem;
 
 //class NNObserver;   //forward declaration
 

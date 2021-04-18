@@ -1,5 +1,5 @@
 #include "GameState.h"
-#include <assert.h> 
+#include <cassert>
 
 using namespace Eigen;
 
@@ -50,7 +50,7 @@ std::shared_ptr<GameState> GameState::select(float cpuct){
 	std::shared_ptr<GameState> current = shared_from_this();
 	int action;
 	
-	while (current->isExpanded and not current->game->ended()){
+	while (current->isExpanded && !current->game->ended()){
 		action = current->getBestAction(cpuct);
 		current = current->play(action);
 	}
@@ -216,7 +216,7 @@ ArrayXf GameState::dirichlet_distribution(float alpha, int size){
 ArrayXf GameState::getValidActions(ArrayXf pred, ArrayXf poss){
 	ArrayXf valid_actions = (pred * poss);
 
-	if (not valid_actions.any()){
+	if (!valid_actions.any()){
 		valid_actions = poss;
 	}
 

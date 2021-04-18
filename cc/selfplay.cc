@@ -5,12 +5,12 @@
 #include <random>
 #include <json.hpp>
 #include <cxxopts.hpp>
-#include <experimental/filesystem>
+#include <filesystem>
 #include <ctime>
 #include <chrono>
 
 using json = nlohmann::json;
-namespace fs = std::experimental::filesystem;
+namespace fs = std::filesystem;
 
 namespace Selfplay{
 	struct Config {

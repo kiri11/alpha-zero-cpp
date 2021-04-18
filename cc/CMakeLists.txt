@@ -5,7 +5,7 @@ include(Dependencies.cmake)
 include_directories(SYSTEM ${EIGEN3_INCLUDE_DIR})
 
 #-Wshadow
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -O3")
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall") # -O3
 SET(CMAKE_CXX_STANDARD 17)
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/games)
@@ -15,7 +15,7 @@ add_subdirectory(${CMAKE_SOURCE_DIR}/player)
 
 
 add_executable(game_info game_info.cc)
-add_dependencies(game_info json Eigen3 bayeselo)
+add_dependencies(game_info json Eigen3) #  TODO: add bayeselo, it can be exe file
 target_include_directories(game_info PRIVATE ${CMAKE_SOURCE_DIR}/games ${JSON_INCLUDE_DIR})
 target_link_libraries(game_info game)
 
